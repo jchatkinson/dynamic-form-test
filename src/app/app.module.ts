@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { DynamicFormsCoreModule } from '@ng-dynamic-forms/core';
 import { DynamicFormsMaterialUIModule } from '@ng-dynamic-forms/ui-material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatInputModule, MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSliderModule, MatTooltipModule } from '@angular/material'
+import { MatCardModule, MatInputModule, MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatSliderModule, MatTooltipModule, MatIconModule, MatDividerModule } from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -27,6 +27,8 @@ import { MatCardModule, MatInputModule, MatButtonModule, MatCheckboxModule, MatF
     MatFormFieldModule,
     MatSliderModule,
     MatTooltipModule,
+    MatIconModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
