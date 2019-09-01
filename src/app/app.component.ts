@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DynamicFormModel, DynamicFormService } from '@ng-dynamic-forms/core';
 import { MY_FORM_MODEL } from './dynamic-form.model';
 import { FormGroup } from '@angular/forms';
+import { OutputService } from './output.service';
 
 @Component({
   selector: 'app-root',
@@ -54,26 +55,30 @@ export class AppComponent implements OnInit {
       "required": true
     }],
     output: '<p>Click submit to proceed...</p>',
-    notes: ``
+    notes: ''
   };
   formModel: DynamicFormModel = this.formService.fromJSON(this.calc.input);
   formGroup: FormGroup;
+  output = this.calc.output;
+  notes = this.calc.notes;
 
-  constructor(private formService: DynamicFormService) {}
+  constructor(private formService: DynamicFormService, private outputService: OutputService) {}
 
   ngOnInit() {
     this.formGroup = this.formService.createFormGroup(this.formModel);
   }
 
   onSubmit() {
-    console.log(this.formGroup);
+    // console.log(this.formGroup);
     const values = this.formGroup.value;
-    const Vc = Math.round(0.65 * 0.18 * Math.sqrt(values.fc) * values.bw * values.h * 10) / 10;
-    this.calc.output = `
-    <p>Concrete contribution, Vc:</p>
-    <p>Vc = ϕ<sub>c</sub> λ β √f<sub>c</sub> b d<sub>v</sub></p>
-    <p>Vc = 0.65 * 1.0 * 0.18 * √${values.fc} * ${values.bw} * ${values.h}</p>
-    <p>Vc = ${Vc} kip</p>`;
-    this.calc.notes = `β assumed to be 0.18.\nλ assumed to be 1.0 (normal-weight concrete)`;
+    const result = this.outputService.getOutput(values);
+    this.output = result.output;
+    this.notes = result.notes;
+  }
+
+  onClear() {
+    this.formGroup.reset();
+    this.output = 'test';
+    this.notes = this.calc.notes;
   }
 }

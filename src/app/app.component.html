@@ -18,20 +18,20 @@
         <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
           <dynamic-material-form [group]="formGroup" [model]="formModel"></dynamic-material-form>
           <button mat-stroked-button type="submit" [disabled]="!formGroup.valid">Submit</button>
-          <button mat-stroked-button (click)="formGroup.reset()">Clear</button>
+          <button mat-stroked-button (click)="onClear()">Clear</button>
         </form>
         <img [src]="calc.image">
       </div>
 
 
       <h4>Calculations:</h4>
-      <div [innerHTML]="calc.output"></div>
+      <div [innerHTML]="output"></div>
 
       <mat-form-field>
         <mat-label>Additional Notes:</mat-label>
         <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-          cdkAutosizeMaxRows="20" [(ngModel)]="calc.notes"></textarea>
-        <button mat-button *ngIf="calc.notes" matSuffix mat-icon-button aria-label="Clear" (click)="calc.notes=''">
+          cdkAutosizeMaxRows="20" [(ngModel)]="notes"></textarea>
+        <button mat-button *ngIf="notes" matSuffix mat-icon-button aria-label="Clear" (click)="notes=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
