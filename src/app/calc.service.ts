@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { DynamicFormModel, DynamicFormService } from '@ng-dynamic-forms/core';
 import { Observable, of } from 'rxjs';
 
@@ -194,4 +194,54 @@ const formFlexureDesign = JSON.stringify([{
   required: true
 }]);
 
+const formBeam1 = JSON.stringify([{
+  type: 'INPUT',
+  inputType: 'number',
+  id: 'L',
+  label: 'Beam Length',
+  prefix: 'L = ',
+  suffix: 'in',
+  value: 120,
+  min: 0,
+  required: true
+}, {
+  type: 'INPUT',
+  inputType: 'number',
+  id: 'w',
+  label: 'Load',
+  prefix: 'w = ',
+  suffix: 'lb/in',
+  value: 5,
+  required: true
+}]);
 
+const formBeam2 = JSON.stringify([{
+  type: 'INPUT',
+  inputType: 'number',
+  id: 'L',
+  label: 'Beam Length',
+  prefix: 'L = ',
+  suffix: 'in',
+  value: 120,
+  min: 0,
+  required: true
+}, {
+  type: 'INPUT',
+  inputType: 'number',
+  id: 'w',
+  label: 'Load',
+  prefix: 'w = ',
+  suffix: 'lb/in',
+  value: 5,
+  required: true
+}, {
+  type: 'INPUT',
+  inputType: 'number',
+  id: 'b',
+  label: 'Length of Load',
+  prefix: 'b = ',
+  suffix: 'in',
+  value: 10,
+  required: true,
+  min: 0
+}]);
