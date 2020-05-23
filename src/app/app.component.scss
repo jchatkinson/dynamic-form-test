@@ -1,43 +1,20 @@
-.container {
-    display: flex;
-    flex-direction: column;
+.sidenav-container {
     height: 100%;
+  }
+  
+  .sidenav {
+    width: 200px;
+  }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
 
-    mat-card {
-        margin: 24px;
-        flex-grow: 1;
 
-        mat-card-header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-
-                .mat-card-header-text {
-                    flex-grow: 1;
-                }
-        }
-
-        mat-card-content {
-            margin: 16px 16px;
-
-            .input {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-
-                img {
-                    max-width: 50%;
-                }
-
-                button {
-                    margin-right: 12px;
-                }
-            }
-
-            mat-form-field {
-                width: 100%;
-            }
-        }
-        
-    }
-}

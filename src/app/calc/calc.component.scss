@@ -1,0 +1,71 @@
+.full-width {
+  width: 100%;
+}
+
+.shipping-card {
+  min-width: 120px;
+  margin: 20px auto;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  mat-card {
+      margin: 24px;
+      flex-grow: 1;
+
+      mat-card-header {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+
+              .mat-card-header-text {
+                  flex-grow: 1;
+              }
+      }
+
+      mat-card-content {
+          margin: 16px 16px;
+
+          .input {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+
+              img {
+                  max-width: 50%;
+              }
+
+              button {
+                  margin-right: 12px;
+              }
+          }
+
+          mat-form-field {
+              width: 100%;
+          }
+      }
+      
+  }
+}

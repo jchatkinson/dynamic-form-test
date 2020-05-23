@@ -1,49 +1,28 @@
-<div class="container">
-  <mat-card class="calc">
-    <mat-card-header>
-        <mat-card-title>{{calc.title}}</mat-card-title>
-        <mat-card-subtitle>{{calc.subtitle}}</mat-card-subtitle>
-      <div class="header-right">
-          <mat-card-subtitle>{{header.company}}</mat-card-subtitle>
-          <mat-card-subtitle>Designer: {{header.designer}}</mat-card-subtitle>
-          <mat-card-subtitle>Date: {{header.date | date}}</mat-card-subtitle>
-      </div>
-      
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Structuroo</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-content>
-      <h4>Inputs:</h4>
-      <div class="input">
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-          <dynamic-material-form [group]="formGroup" [model]="formModel"></dynamic-material-form>
-          <button mat-stroked-button type="submit" [disabled]="!formGroup.valid">Submit</button>
-          <button mat-stroked-button (click)="onClear()">Clear</button>
-        </form>
-        <img [src]="calc.image">
-      </div>
-
-
-      <h4>Calculations:</h4>
-      <p #calcEl></p>
-
-      <mat-form-field>
-        <mat-label>Additional Notes:</mat-label>
-        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-          cdkAutosizeMaxRows="20" [(ngModel)]="notes"></textarea>
-        <button mat-button *ngIf="notes" matSuffix mat-icon-button aria-label="Clear" (click)="notes=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-
-      <!-- <p>form data:</p>
-      {{ formModel | json }} -->
-    </mat-card-content>
-
-  </mat-card>
-</div>
-
-
-
-
-<router-outlet></router-outlet>
