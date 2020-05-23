@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { DynamicFormModel, DynamicFormService } from '@ng-dynamic-forms/core';
 import { MY_FORM_MODEL } from './dynamic-form.model';
 import { FormGroup } from '@angular/forms';
@@ -10,6 +10,7 @@ import { OutputService } from './output.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('calcEl', {static: true}) calcEl: ElementRef;
   title = 'dynamic-forms';
   header = {
     company: 'ABC Engineering Ltd.',
@@ -59,8 +60,7 @@ export class AppComponent implements OnInit {
   };
   formModel: DynamicFormModel = this.formService.fromJSON(this.calc.input);
   formGroup: FormGroup;
-  output = this.calc.output;
-  notes = this.calc.notes;
+  notes: string;
 
   constructor(private formService: DynamicFormService, private outputService: OutputService) {}
 
@@ -72,13 +72,18 @@ export class AppComponent implements OnInit {
     // console.log(this.formGroup);
     const values = this.formGroup.value;
     const result = this.outputService.getOutput(values);
-    this.output = result.output;
+    this.updateCalc(result.output)
     this.notes = result.notes;
   }
 
   onClear() {
-    this.formGroup.reset();
-    this.output = 'test';
-    this.notes = this.calc.notes;
+    console.log("clearing")
+    // this.formGroup.reset();
+    this.notes = '';
+    this.updateCalc('<p>Click submit to proceed...</p>');
+  }
+
+  updateCalc(str: string) {
+    this.calcEl.nativeElement.innerHTML = str;
   }
 }
