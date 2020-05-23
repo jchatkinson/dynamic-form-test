@@ -21,8 +21,6 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
-    "@ng-dynamic-forms/core": "^9.0.1",
-    "@ng-dynamic-forms/ui-material": "^9.0.1",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
@@ -30,7 +28,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.7",
-    "@angular/cdk": "^8.1.4",
     "@angular/cli": "~9.1.7",
     "@angular/compiler-cli": "~9.1.9",
     "@angular/language-service": "~9.1.9",
