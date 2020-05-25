@@ -5,9 +5,30 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="#">Seismic Loads</a>
+      <a mat-list-item href="#">Wind Loads</a>
+      <a mat-list-item href="#">Snow Loads</a>
+      <a mat-list-item href="#">Nonstructural Seismic Loads</a>
+      <a mat-list-item href="#">Load Combinations</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="#">Concrete Beam</a>
+      <a mat-list-item href="#">Concrete Column</a>
+      <a mat-list-item href="#">Concrete Wall</a>
+      <a mat-list-item href="#">Confinement</a>
+      <a mat-list-item href="#">Basement Retaining Wall</a>
+      <a mat-list-item href="#">Diaphragm</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="#">Steel Section Properties</a>
+      <a mat-list-item href="#">Steel Beam</a>
+      <a mat-list-item href="#">Steel Column</a>
+      <a mat-list-item href="#">Steel Canopy</a>
+      <a mat-list-item href="#">Web Stiffener</a>
+      <a mat-list-item href="#">Welded Connection</a>
+      <a mat-list-item href="#">Bolted Connection</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item href="#">Wood Joist</a>
+      <a mat-list-item href="#">Wood Post</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -17,7 +38,7 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Structuroo</span>

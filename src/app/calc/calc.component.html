@@ -14,23 +14,23 @@
     <h4>Inputs:</h4>
     <div class="input">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+        <formly-form [form]="form" [fields]="calc.fields" [model]="calc.model"></formly-form>
         <button mat-stroked-button type="submit">Submit</button>
-        <button mat-stroked-button (click)="clearForm()">Clear</button>
       </form>
-      <!-- <img [src]="calc.image"> -->
+      <button mat-stroked-button (click)="clearForm()">Clear</button>
+      <img [src]="calc.image">
     </div>
 
 
     <h4>Calculations:</h4>
     <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="20" [(ngModel)]="solution"></textarea>
+        cdkAutosizeMaxRows="20" [(ngModel)]="calc.output"></textarea>
 
-    <mat-form-field>
+    <mat-form-field *ngIf="calc.notes">
       <mat-label>Additional Notes:</mat-label>
       <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="20" [(ngModel)]="notes"></textarea>
-      <button mat-button *ngIf="notes" matSuffix mat-icon-button aria-label="Clear" (click)="notes=''">
+        cdkAutosizeMaxRows="20" [(ngModel)]="calc.notes"></textarea>
+      <button mat-button *ngIf="calc.notes" matSuffix mat-icon-button aria-label="Clear" (click)="calc.notes=''">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>

@@ -11,42 +11,43 @@ import { CalcService, ICalc } from '../calc.service';
 export class CalcComponent {
   title = 'dynamic-forms';
   header: any;
-  calc: ICalc;
+  calc = new ICalc();
   formGroup: FormGroup;
-  notes: string;
-  output: string;
+  // notes: string;
+  // output: string;
   form = new FormGroup({});
-  model = { };
-  fields: FormlyFieldConfig[] = [];
+  // model = { };
+  // fields: FormlyFieldConfig[] = [];
 
   solution = '';
 
-  constructor(private fb: FormBuilder, private calcService: CalcService) {}
+  constructor(private calcService: CalcService) {}
 
   ngOnInit() {
-    this.calcService.getCalc('shear design').subscribe(c => {
+    this.calcService.getCalc('').subscribe(c => {
+      console.log(c);
+      if (c.model === null) {
+        c.model = {};
+      }
       this.calc = c;
-      this.fields = c.fields;
-      this.model = c.model;
-      this.output = c.output;
     });
     this.calcService.getHeader().subscribe(h => this.header = h);
   }
 
   onSubmit() {
-    // console.log(this.formGroup);
+    if (this.form.valid) {
+      this.calcService.getSolution(this.calc.calcmethod, this.calc.model).subscribe(r => {
+        console.log(r);
+        this.calc.output = r.result;
+      })     
+    }
   }
 
-  onClear() {
-    this.formGroup.reset();
-    this.notes = '';
-    this.output = '<p>Click submit to proceed...</p>';
-  }
   saveCalc() {
     console.log("user accounts not implemented, yet");
   }
 
   clearForm() {
-
+    this.calc.model = {};
   }
 }
